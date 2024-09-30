@@ -1,22 +1,23 @@
-﻿@model IEnumerable<CST_323_MilestoneApp.Models.Book>
-
-
+﻿@model IEnumerable<CST_323_MilestoneApp.Models.User>
 
 @{
-    ViewBag.Title = "Books";
+    ViewData["Title"] = "Users";
 }
 
-<h2>Books</h2>
-
+<h1>Users</h1>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>ISBN</th>
-            <th>Published Date</th>
-            <th>Genre</th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -24,18 +25,25 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                <td>@Html.DisplayFor(modelItem => item.Author.Name)</td>
-                <td>@Html.DisplayFor(modelItem => item.ISBN)</td>
-                <td>@Html.DisplayFor(modelItem => item.Published_date)</td> @* find way to remove time from published date *@
-                <td>@Html.DisplayFor(modelItem => item.Genre)</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Book_id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Book_id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Book_id">Delete</a>
+                    @Html.DisplayFor(modelItem => item.user_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-user_id="@item.user_id">Edit</a> |
+                    <a asp-action="Details" asp-route-user_id="@item.user_id">Details</a> |
+                    <a asp-action="Delete" asp-route-user_id="@item.user_id">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
